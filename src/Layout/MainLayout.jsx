@@ -1,15 +1,17 @@
 import React from "react";
-import Navbar from "../Components/Navbar/Navbar";
+
 import { Outlet } from "react-router";
 import Footer from "../Components/Footer/Footer";
+import NavBar from "../Components/Navbar/Navbar";
+
 
 const MainLayout = () => {
   return (
-    <>
-      <Navbar />
+    <main className="dark:bg-black overflow-hidden">
+      <NavBar/>
       <Outlet />
       <Footer />
-    </>
+    </main>
   );
 };
 
