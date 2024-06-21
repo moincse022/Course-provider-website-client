@@ -3,6 +3,8 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Switch } from "@mui/material";
 import photoURL from "../../assets/home/girl.jpg";
+import {FaBars} from 'react-icons/fa';
+import {motion} from 'framer-motion';
 const theme = createTheme({
   palette: {
     primary: {
@@ -24,10 +26,10 @@ const NavBar = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isFixed, setIsFixed] = useState(false);
-  const user = false;
+  const user = true;
 
   const navLinks = [
-    { name: "Home", route: "/home" },
+    { name: "Home", route: "/" },
     { name: "Instructors", route: "/instructors" },
     { name: "Classes", route: "/classes" },
   ];
@@ -85,10 +87,11 @@ const NavBar = () => {
   console.log('log out')
  }
   return (
-    <nav className={`sticky top-0 z-50 ${navBg}`}>
-      <div className="w-[90%] mx-auto ">
+    // <motion.nav className={`${isHome ? navBg :"bg-white dark:bg-black backdrop-blur-2xl"} ${isFixed ? "fixed top-0 z-50" : " static"}`} >
+      <nav className="static top-0 z-50 ">
+     <div className="lg:w-[90%] mx-auto sm:px-6 lg:px-6">
         <div className="flex justify-between items-center gap-5">
-          <div>
+          <div className="text-black dark:text-white flex items-center">
             <h1 className="flex gap-3 items-center font-bold ">
               courseMaster
               <img
@@ -101,12 +104,17 @@ const NavBar = () => {
               Quick explore
             </p>
           </div>
-
-          <div className="hidden md:block pr-4">
+      {/* mobile menu */}
+         <div className="md:hidden flex items-center"> 
+            <button className="text-gray-500  hover:text-white focus:outline-none" onClick={toggleMobileMenu}>
+              <FaBars className="h-6 w-6 hover:text-primary duration-75" />
+            </button>
+         </div>
+          <div className="hidden md:block pr-4 ">
             <div className="flex">
-              <ul className="ml-8 space-x-2 flex items-center">
+              <ul className="ml-8 space-x-2 flex items-center ">
                 {navLinks.map((link) => (
-                  <li key={link.route}>
+                  <li key={link.route} className="">
                     <NavLink
                       to={link.route}
                       className={({ isActive }) =>

@@ -1,9 +1,16 @@
 import React from 'react';
+import HeroContainer from './Hero/HeroContainer';
+import Gallery from '../Gallery/Gallery';
+import PopularClasses from '../PopularClasses/PopularClasses';
+import PopularTeacher from '../PopularTeacher';
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home page</h2>
+         <HeroContainer/>
+         <Gallery/>
+         <PopularClasses/>
+         <PopularTeacher/>
         </div>
     );
 };
